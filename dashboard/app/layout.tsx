@@ -1,42 +1,35 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Image from "next/image";
-import Link from "next/link";
-import Menu from "@/components/Menu";
+import './globals.css';
+import Navbar from '@/components/Navbar';
+import Menu from '@/components/Menu';
+import { ReactNode } from 'react';
+import { Toaster } from 'react-hot-toast';
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Student Dashboard",
-  description: "Next.js School Management System",
+export const metadata = {
+  title: 'WhatBytes Dashboard',
+  description: 'Skill Test Dashboard',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html>
-     <body>
-    <div className="h-screen flex ">
-    {/* LEFT */}
-    <div className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] px-5 ">
-    <Link
-       href="/"
-       className="flex items-center justify-center lg:justify-start gap-2"
-     >
-     </Link>
-     <Menu />
+    <html lang="en">
+      <body className="bg-gray-50">
+        <Toaster position="top-center" reverseOrder={false} />
+        <div className="flex flex-col min-h-screen">
+          {/* Navbar at the top */}
+          <Navbar />
 
-    </div>
-      {/* RIGHT */}
-    <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] bg-[#F7F8FA] overflow-scroll flex flex-col">
-    
-    </div>
-   </div>
-   </body>
- </html>
+          {/* Below navbar, flex row: sidebar (Menu) + main content */}
+          <div className="flex flex-1">
+            {/* Left-side Menubar */}
+            <Menu />
+
+            {/* Main content area */}
+            <main className="flex-1 overflow-y-auto bg-gray-50 p-4">
+              {children}
+            </main>
+          </div>
+        </div>
+      </body>
+    </html>
   );
 }

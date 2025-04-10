@@ -62,8 +62,9 @@ const UpdateForm = ({ onClose, onUpdate, initialValues }: any) => {
       <input
         value={rank}
         onChange={(e) => {
-          setRank(e.target.value);
-          validateField("rank", e.target.value);
+          const value = e.target.value === "" ? "" : Number(e.target.value); // Handle empty string
+          setRank(value as number); 
+          validateField("rank", value);
         }}
         className="border rounded px-3 py-2"
         placeholder="Enter Rank"
@@ -79,8 +80,9 @@ const UpdateForm = ({ onClose, onUpdate, initialValues }: any) => {
       <input
         value={percentile}
         onChange={(e) => {
-          setPercentile(e.target.value);
-          validateField("percentile", e.target.value);
+          const value = e.target.value === "" ? "" : Number(e.target.value); // Convert to number
+          setPercentile(value as number);
+          validateField("percentile", value);
         }}
         className="border rounded px-3 py-2"
         placeholder="Enter Percentile"
@@ -96,8 +98,9 @@ const UpdateForm = ({ onClose, onUpdate, initialValues }: any) => {
       <input
         value={correctAnswers}
         onChange={(e) => {
-          setCorrectAnswers(e.target.value);
-          validateField("correctAnswers", e.target.value);
+          const value = e.target.value === "" ? "" : Number(e.target.value);// Convert to number
+          setCorrectAnswers(value as number);     
+          validateField("correctAnswers", value);
         }}
         className="border rounded px-3 py-2"
         placeholder="Enter Correct Answers"

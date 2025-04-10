@@ -37,7 +37,7 @@ const ComparisonGraph = ({ percentile }: { percentile: number }) => {
   ];
 
   return (
-    <div className="bg-white rounded-lg p-4 shadow space-y-4 ">
+    <div className="bg-white rounded-lg p-4 shadow flex flex-col gap-4 max-w-2xl mx-auto">
       <h2 className="text-lg font-semibold">Comparison Graph</h2>
 
       <div className="flex justify-between items-center pr-3 ">
